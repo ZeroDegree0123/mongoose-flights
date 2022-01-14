@@ -1,13 +1,15 @@
-/* body {
-    display: flex;
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+thead {
+ text-align: center;
 }
 
-table {
-    display: flex;
-    flex-direction: column;
-    color: black;
-    justify-content: space-around;
-    align-items: center;
-} */
+td {
+    font-size: 2.3vmin;
+    text-align: center;
+    width: 150px;
+  
+}
+
+.depart {
+    border: solid 2px black;
+}
