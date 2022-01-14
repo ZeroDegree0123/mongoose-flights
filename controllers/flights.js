@@ -20,7 +20,7 @@ function create(req, res) {
       if (err) return res.render('flights/new');
       console.log(flight);
       // for now, redirect right back to new.ejs
-      res.redirect('/flights/new');
+      res.redirect('/flights');
     });
   }
 
