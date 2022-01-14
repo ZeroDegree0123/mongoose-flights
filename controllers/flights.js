@@ -14,6 +14,7 @@ function index(req, res) {
 }
 
 function create(req, res) {
+    req.body.departs = req.body.departs || undefined;
     const flight = new Flight(req.body);
     flight.save(function(err) {
       // one way to handle errors
