@@ -19,6 +19,8 @@
         <td><%= f.flightNo %></td>
         <td class="depart"><%= f.departs %></td>
         </tr>
+        <td><a href="/flights/<%= f._id %>">Details</a></td>
+        </tr>
       <% }); %>
   </tbody>
 </table>

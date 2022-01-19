@@ -1,33 +1,42 @@
-const Flight = require('../models/flight')
-
+const Flight = require("../models/flight");
 module.exports = {
-    newFlight,
-    create,
-    index,
+  new: newFlight,
+  index,
+  create,
+  show,
 };
 
+function newFlight(req, res) {
+  res.render("flights/new");
+}
+
 function index(req, res) {
-    Flight.find({}, function(err, flights) {
-        if (err) return res.redirect('/');
-        res.render('flights/index', {flights});
-    });
+  Flight.find({}, function (err, flights) {
+    res.render("flights/index", { flights });
+  });
+}
+
+function show(req, res) {
+  Flight.findById(req.params.id, (err, flight) => {
+    res.render("flights/show", { title: "Flight info", flight });
+  });
 }
 
 function create(req, res) {
-    req.body.departs = req.body.departs || undefined;
-    const flight = new Flight(req.body);
-    flight.save(function(err) {
-      // one way to handle errors
-      if (err) return res.render('flights/new');
-      console.log(flight);
-      // for now, redirect right back to new.ejs
-      res.redirect('/flights');
-    });
-  }
-
-function newFlight(req, res) {
-    res.render('flights/new');
+  //checking if depart was left empty so it can be set to undefined to let the schema default kick in
+  req.body.departs = req.body.departs || undefined;
+  // remove any whitespace at start and end of airline
+  req.body.airline.trim();
+  const flight = new Flight(req.body);
+  flight.save(function (err) {
+    //one way to handle errors
+    if (err) return res.render("flights/new");
+    console.log(flight);
+    //for now, redirect right back to new.ejs
+    res.redirect("/flights");
+  });
 }
+
 
 
 
