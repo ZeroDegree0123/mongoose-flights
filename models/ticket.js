@@ -9,3 +9,4 @@ const ticketSchema = new Schema({
 });
 
 module.exports = mongoose.model("Ticket", ticketSchema);
+
